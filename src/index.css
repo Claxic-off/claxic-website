@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #FF2B12;
+  --color-brand-soft: #FFF0EC;
+  --color-charcoal: #151515;
+  --color-cream: #FFF9F2;
+  --color-cream-yellow: #FFF4D8;
+  --color-muted: #555B65;
+  --color-light: #F4F5F6;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.pixel-font {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  text-transform: uppercase;
+}
+
+body {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  background-color: #ffffff;
+  color: #151515;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus visible styles */
+:focus-visible {
+  outline: 2px solid #FF2B12;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Smooth hover transitions */
+a, button {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F4F5F6;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF2B12;
+  border-radius: 3px;
+}

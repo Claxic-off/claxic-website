@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <!-- CLAXIC Logo SVG - Replace with official logo asset when available -->
+  <rect width="200" height="60" fill="transparent"/>
+  <!-- Bold rounded lettering in brand red-orange -->
+  <text
+    x="10"
+    y="46"
+    font-family="'Arial Black', 'Arial Bold', Impact, sans-serif"
+    font-weight="900"
+    font-size="48"
+    fill="#FF2B12"
+    letter-spacing="-1"
+  >CLAXIC</text>
+</svg>

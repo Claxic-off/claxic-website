@@ -1,3 +1,4 @@
+
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import MainLayout from './layouts/MainLayout';
@@ -11,6 +12,7 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import NotFoundPage from './pages/NotFoundPage';
+import FounderPage from './pages/FounderPage';
 
 function ScrollAndTitle() {
   const { pathname } = useLocation();
@@ -33,6 +35,7 @@ export default function App() {
           <Route path="/technologies" element={<TechnologiesPage />} />
           <Route path="/academy" element={<AcademyPage />} />
           <Route path="/members" element={<MembersPage />} />
+          <Route path="/founder" element={<FounderPage />} />
           <Route path="/faq" element={<FAQPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />

@@ -1,10 +1,18 @@
 import FAQAccordion from '../components/FAQAccordion';
+import SEO from '../components/SEO';
 import { faqs } from '../data/faq';
 import WhatsAppButton from '../components/WhatsAppButton';
 
 export default function FAQPage() {
   return (
     <>
+      <SEO
+        title="Frequently Asked Questions | Claxic"
+        description="Find answers to frequent questions about Claxic Technologies, Claxic Academy, and how to get in touch with the team."
+        canonicalPath="/faq"
+        robots="index, follow"
+        ogType="website"
+      />
       {/* ── Hero ── */}
       <section className="bg-white pt-14 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">

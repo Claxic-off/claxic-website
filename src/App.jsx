@@ -12,26 +12,11 @@ import PrivacyPage from './pages/PrivacyPage';
 import TermsPage from './pages/TermsPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-/**
- * Scroll to top on every route change and update document title.
- */
-const PAGE_TITLES = {
-  '/': 'Claxic — Technology, Innovation & Education',
-  '/about': 'About Claxic — Technology & Education',
-  '/technologies': 'Claxic Technologies — Web Development & Software',
-  '/academy': 'Claxic Academy — Online Courses & Live Classes',
-  '/faq': 'FAQ — Claxic Help Centre',
-  '/contact': 'Contact Claxic',
-  '/privacy': 'Privacy Policy — Claxic',
-  '/terms': 'Terms of Use — Claxic',
-};
-
 function ScrollAndTitle() {
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
-    document.title = PAGE_TITLES[pathname] || 'Claxic';
   }, [pathname]);
 
   return null;

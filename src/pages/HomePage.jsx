@@ -1,15 +1,18 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, Laptop, GraduationCap, Users, Zap } from 'lucide-react';
+import SEO from '../components/SEO';
+import { buildWhatsAppUrl, getWhatsAppConfig } from '../lib/whatsapp';
 import creativeLearningDesk from '../assets/01 Creative Learning Desk with Idea Bulb.png';
 import techCharacter from '../assets/02 Cheerful Cartoon Coder Workspace.png';
 import academyCharacter from '../assets/03 Cheerful Online Learning Desk Scene.png';
 import rocketBadge from '../assets/04 Glossy Blue Rocket Badge.png';
 import lightbulbBadge from '../assets/05 Cheerful Lightbulb Badge.png';
 import teamBadge from '../assets/06 Glossy Red Team Badge.png';
-const WHATSAPP_NUMBER = import.meta.env.VITE_CLAXIC_WHATSAPP || '';
-const PROJECT_URL = WHATSAPP_NUMBER
-  ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi Claxic, I'd like to discuss a project.")}`
-  : '/contact';
+const { number: WHATSAPP_NUMBER } = getWhatsAppConfig();
+const PROJECT_URL = buildWhatsAppUrl(
+  WHATSAPP_NUMBER,
+  "Hi Claxic, I'd like to discuss a project."
+) || '/contact';
 
 const BENEFITS = [
   {
@@ -55,6 +58,13 @@ const HOW_WE_HELP = [
 export default function HomePage() {
   return (
     <>
+      <SEO
+        title="Claxic | Technology Solutions & AI Learning"
+        description="Claxic provides technology solutions and practical AI learning experiences for individuals, businesses, and future creators."
+        canonicalPath="/"
+        robots="index, follow"
+        ogType="website"
+      />
       {/* ── Hero ── */}
       <section className="bg-white pt-6 pb-12 sm:pt-8 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -68,7 +78,7 @@ export default function HomePage() {
               for <span className="text-[#FF2B12]">real-world needs</span>
             </h1>
             <p className="text-base sm:text-lg text-[#555B65] leading-relaxed mb-8 max-w-lg" style={{ fontFamily: 'Georgia, "Times New Roman", serif', letterSpacing: '-0.02em' }}>
-              Claxic builds modern digital solutions and practical learning experiences for individuals, businesses and future creators.
+              Claxic helps people and businesses with custom websites, digital products and practical AI learning designed for real-world growth.
             </p>
             <div className="flex flex-wrap items-center gap-3.5 sm:gap-4">
               <Link

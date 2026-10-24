@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { Menu, X, MessageCircle, ArrowRight } from 'lucide-react';
 import claxicLogo from '../assets/claxic logo.png';
+import { buildWhatsAppUrl, getWhatsAppConfig } from '../lib/whatsapp';
 
 const NAV_LINKS = [
   { to: '/', label: 'Home', end: true },
@@ -12,20 +13,22 @@ const NAV_LINKS = [
   { to: '/contact', label: 'Contact' },
 ];
 
-const WHATSAPP_NUMBER = import.meta.env.VITE_CLAXIC_WHATSAPP || '';
-const WHATSAPP_URL = WHATSAPP_NUMBER
-  ? `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Claxic%2C%20I%27d%20like%20to%20know%20more!`
-  : '#contact';
+const { number: WHATSAPP_NUMBER } = getWhatsAppConfig();
+const WHATSAPP_URL = buildWhatsAppUrl(
+  WHATSAPP_NUMBER,
+  "Hi Claxic, I'd like to know more!"
+);
 
 function ClaxicLogo() {
   return (
     <Link to="/" aria-label="Claxic Home" className="flex items-center shrink-0">
       <img
         src={claxicLogo}
-        alt="CLAXIC"
-        className="h-9 w-auto object-contain"
-        width="108"
-        height="36"
+        alt="Claxic logo"
+        className="h-8 w-auto sm:h-9 md:h-10 object-contain"
+        width="120"
+        height="40"
+        style={{ objectFit: 'contain' }}
       />
     </Link>
   );
@@ -123,18 +126,20 @@ export default function Header() {
               {link.label}
             </NavLink>
           ))}
-          <div className="pt-2 pb-1">
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 bg-[#FF2B12] text-white text-sm font-bold px-4 py-3 rounded-xl transition-colors hover:bg-[#e02410]"
-              onClick={() => setMenuOpen(false)}
-            >
-              <MessageCircle size={16} strokeWidth={2.5} aria-hidden="true" />
-              Chat on WhatsApp
-            </a>
-          </div>
+          {WHATSAPP_URL && (
+            <div className="pt-2 pb-1">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 bg-[#FF2B12] text-white text-sm font-bold px-4 py-3 rounded-xl transition-colors hover:bg-[#e02410]"
+                onClick={() => setMenuOpen(false)}
+              >
+                <MessageCircle size={16} strokeWidth={2.5} aria-hidden="true" />
+                Chat on WhatsApp
+              </a>
+            </div>
+          )}
         </nav>
       </div>
     </header>

@@ -21,15 +21,15 @@ export const faqs = [
     items: [
       {
         q: 'What services does Claxic Technologies offer?',
-        a: 'Claxic Technologies offers website development, web application development, custom software development, UI/UX design, and API integration and maintenance.',
+        a: 'Claxic Technologies focuses on custom website development, web application development, custom software development, UI/UX design, integrations and digital product support.',
       },
       {
-        q: 'Do you work with small businesses and startups?',
-        a: 'Yes. We work with individuals, small businesses, startups and anyone looking to build useful digital solutions.',
+        q: 'Do you build custom websites and business websites?',
+        a: 'Yes. We help clients build custom websites and digital experiences tailored to their goals, brand and users.',
       },
       {
         q: 'What technologies do you use?',
-        a: 'We work with modern web technologies. The specific stack depends on the project requirements. Contact us to discuss what suits your project best.',
+        a: 'We work with modern web technologies and choose the stack based on the project requirements. The best fit depends on the solution being built.',
       },
     ],
   },
@@ -55,15 +55,15 @@ export const faqs = [
     items: [
       {
         q: 'What courses does Claxic Academy offer?',
-        a: 'Claxic Academy offers practical online courses covering technology and digital skills. You can browse available courses on the Academy page.',
+        a: 'Claxic Academy offers beginner-friendly online learning focused on AI, digital skills and practical technology topics. Course details vary by offering and are best confirmed when you enquire.',
       },
       {
         q: 'Are the courses beginner-friendly?',
-        a: 'Yes. Our courses are designed to be beginner-friendly with clear explanations and practical activities.',
+        a: 'Yes. Claxic Academy is designed for learners who want a clear, practical introduction to AI and related digital skills.',
       },
       {
-        q: 'Is there a certificate on completion?',
-        a: 'Please contact us for information about course completion and any associated recognition for the specific course you are interested in.',
+        q: 'Can I learn AI online as a beginner?',
+        a: 'Yes. The Academy focuses on beginner-friendly AI learning, practical tools and guided project-based learning for learners who are starting from the basics.',
       },
     ],
   },

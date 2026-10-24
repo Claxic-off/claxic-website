@@ -1,9 +1,17 @@
 import { CheckCircle2 } from 'lucide-react';
+import SEO from '../components/SEO';
 import { MEMBERS } from '../data/members';
 
 export default function MembersPage() {
   return (
     <>
+      <SEO
+        title="Our Team | Claxic"
+        description="Meet the team behind Claxic and learn more about the people building technology solutions and learning experiences."
+        canonicalPath="/members"
+        robots="index, follow"
+        ogType="website"
+      />
       {/* ── Hero ── */}
       <section className="bg-white pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b border-gray-100">
         <div className="max-w-4xl mx-auto text-center">

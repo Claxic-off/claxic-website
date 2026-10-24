@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import {
   ArrowRight,
   Code2,
@@ -58,6 +59,13 @@ const purposeItems = [
 export default function AboutPage() {
   return (
     <>
+      <SEO
+        title="About Claxic | Our Mission & Vision"
+        description="Learn about Claxic, a technology and learning initiative focused on practical digital solutions, accessible education, and community-driven growth."
+        canonicalPath="/about"
+        robots="index, follow"
+        ogType="website"
+      />
       {/* ABOUT HERO */}
       <section className="bg-white px-4 pb-0 pt-4 sm:px-6 sm:pb-0 sm:pt-6 lg:px-8 lg:pb-0 lg:pt-8">
         <div className="mx-auto max-w-[1280px] px-2 py-4 sm:px-5 sm:py-5 lg:px-8 lg:py-6">
@@ -72,7 +80,7 @@ export default function AboutPage() {
                 <span className="block lg:whitespace-nowrap">
                   A Platform to Build Skills
                 </span>
-
+                {' '}
                 <span className="block lg:whitespace-nowrap">
                   and{' '}
                   <span className="text-[#FF2B12]">

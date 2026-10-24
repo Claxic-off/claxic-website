@@ -1,6 +1,7 @@
 import { MessageCircle } from 'lucide-react';
+import { buildWhatsAppUrl, getWhatsAppConfig } from '../lib/whatsapp';
 
-const WHATSAPP_NUMBER = import.meta.env.VITE_CLAXIC_WHATSAPP || '';
+const { number: WHATSAPP_NUMBER } = getWhatsAppConfig();
 
 /**
  * WhatsApp CTA button with optional prefilled message.
@@ -17,9 +18,7 @@ export default function WhatsAppButton({
   variant = 'primary',
   className = '',
 }) {
-  const url = WHATSAPP_NUMBER
-    ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
-    : '#contact';
+  const url = buildWhatsAppUrl(WHATSAPP_NUMBER, message);
 
   const base = 'inline-flex items-center gap-2 font-bold text-sm px-5 py-3 rounded-full transition-all duration-200 hover:scale-105 active:scale-95';
 
@@ -28,6 +27,10 @@ export default function WhatsAppButton({
     outline: 'border-2 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white',
     ghost: 'text-[#25D366] hover:underline px-0 py-0 hover:scale-100',
   };
+
+  if (!url) {
+    return null;
+  }
 
   return (
     <a

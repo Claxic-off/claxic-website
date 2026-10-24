@@ -1,29 +1,69 @@
 import { useEffect } from 'react';
-import { ArrowRight, BrainCircuit, BriefcaseBusiness, BookOpenText, Palette, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
+import { buildWhatsAppUrl, getWhatsAppConfig } from '../lib/whatsapp';
+import { ArrowRight, BrainCircuit, BriefcaseBusiness, BookOpenText, MessageCircle, Palette, Sparkles } from 'lucide-react';
 import onlineClassStudyScene from '../assets/10 Cheerful Online Class Study Scene.png';
 import aiBrainInterfaceScene from '../assets/11 Holographic Neural Brain Interface.png';
 import aiWorkspaceScene from '../assets/12 Modern 3D Terminal Icon.png';
 import dataScienceScene from '../assets/08 Inspired Student with Coding Icons.png';
 import productivityScene from '../assets/05 Cheerful Lightbulb Badge.png';
 import creativeScene from '../assets/01 Creative Learning Desk with Idea Bulb.png';
+import roadmapScene from '../assets/13 Pastel Learning Journey Roadmap.png';
 import CourseCatalogue from '../components/CourseCatalogue';
 import WhatsAppButton from '../components/WhatsAppButton';
 
 const CATEGORIES = [
-  { title: 'AI', icon: BrainCircuit, desc: 'Machine learning, AI workflows, prompt thinking, and practical applications.' },
-  { title: 'Web Development', icon: BriefcaseBusiness, desc: 'Frontend, backend, product thinking, and modern web experiences.' },
-  { title: 'Data Science', icon: BookOpenText, desc: 'Data literacy, analysis, visualization, and real problem-solving skills.' },
-  { title: 'Tools & Productivity', icon: Sparkles, desc: 'Helpful workflows, collaboration tools, and digital efficiency.' },
-  { title: 'Creative Projects', icon: Palette, desc: 'Hands-on creative work that turns ideas into polished outcomes.' },
+  { title: 'AI', icon: BrainCircuit, desc: 'Beginner AI learning, practical workflows, prompt thinking and generative AI foundations.' },
+  { title: 'Web Development', icon: BriefcaseBusiness, desc: 'Frontend, backend, product thinking and modern web experiences.' },
+  { title: 'Data Science', icon: BookOpenText, desc: 'Data literacy, analysis, visualization and practical problem-solving skills.' },
+  { title: 'Tools & Productivity', icon: Sparkles, desc: 'Helpful AI tools, workflows and digital efficiency for everyday learning and work.' },
+  { title: 'Creative Projects', icon: Palette, desc: 'Hands-on creative work that turns ideas into polished outcomes and portfolio-ready projects.' },
 ];
 
 const LEARNING_PATH = [
-  { title: 'Learn the Fundamentals', desc: 'Start with the essentials so you build a clear base before moving into advanced work.', accent: '#ff5b3d' },
-  { title: 'Practice with Guidance', desc: 'Work through examples, feedback, and guided activities to turn learning into momentum.', accent: '#8d5cf6' },
-  { title: 'Build Real Projects', desc: 'Apply your skills to real tasks that sharpen your thinking and confidence.', accent: '#3a82ff' },
-  { title: 'Review & Improve', desc: 'Reflect, refine, and strengthen weak spots with iterative feedback and practice.', accent: '#19a76a' },
-  { title: 'Keep Growing', desc: 'Take the next step with ongoing support, new challenges, and practical growth.', accent: '#f4a33d' },
+  {
+    number: '01',
+    title: 'Learn Basics',
+    desc: 'Build a strong foundation with clear concepts.',
+    bullets: ['Core concepts', 'Beginner-friendly lessons', 'Essential skills'],
+    accent: '#FF321E',
+  },
+  {
+    number: '02',
+    title: 'Practice',
+    desc: 'Apply what you learn through guided exercises.',
+    bullets: ['Practice tasks', 'Step-by-step guidance', 'Real examples'],
+    accent: '#FF321E',
+  },
+  {
+    number: '03',
+    title: 'Build Projects',
+    desc: 'Turn knowledge into useful projects.',
+    bullets: ['Hands-on builds', 'Portfolio practice', 'Problem solving'],
+    accent: '#FF321E',
+  },
+  {
+    number: '04',
+    title: 'Review & Improve',
+    desc: 'Review your work and strengthen your skills.',
+    bullets: ['Feedback', 'Testing', 'Refinement'],
+    accent: '#FF321E',
+  },
+  {
+    number: '05',
+    title: 'Keep Growing',
+    desc: 'Continue exploring new skills and challenges.',
+    bullets: ['Advanced topics', 'New tools', 'Ongoing learning'],
+    accent: '#FF321E',
+  },
 ];
+
+const { number: WHATSAPP_NUMBER } = getWhatsAppConfig();
+const WHATSAPP_TALK_URL = buildWhatsAppUrl(
+  WHATSAPP_NUMBER,
+  'Hi Claxic Academy, I want to start learning and would like to know the next steps.'
+);
 
 export default function AcademyPage() {
   useEffect(() => {
@@ -53,8 +93,16 @@ export default function AcademyPage() {
 
   return (
     <>
+      <SEO
+        title="Claxic Academy | Learn AI Online for Beginners in India"
+        description="Learn AI online with beginner-friendly courses from Claxic Academy. Explore practical AI tools, generative AI skills, and project-based learning designed for real-world use."
+        canonicalPath="/academy"
+        robots="index, follow"
+        ogType="website"
+      />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700;800;900&family=Courier+Prime:wght@400;700&display=swap');
 
         .academy-page {
           font-family: 'Inter', 'Segoe UI', sans-serif;
@@ -459,152 +507,324 @@ export default function AcademyPage() {
         }
 
         .academy-path {
-          background: #f8efe9;
+          background: #fff5f1;
+          padding: 1rem 1rem 3rem;
+          font-family: 'Roboto Slab', 'Georgia', 'Times New Roman', serif;
         }
 
         .academy-path-shell {
-          display: grid;
-          grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-          align-items: start;
-          gap: 2.5rem;
           max-width: 1280px;
           margin: 0 auto;
         }
 
-        .academy-path-intro {
-          max-width: 520px;
-          padding-top: 0.35rem;
+        .academy-path-header {
+          text-align: center;
+          margin-bottom: 1.5rem;
         }
 
-        .academy-path-copy {
-          margin-top: 1.1rem;
-          max-width: 430px;
-          color: #4d5865;
+        .academy-path-header .academy-eyebrow {
+          margin-bottom: 0.8rem;
+          font-family: 'Courier Prime', 'Courier New', monospace;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          font-size: 0.78rem;
+        }
+
+        .academy-path-header h2 {
+          margin: 0;
+          font-size: clamp(2.2rem, 3vw, 3.3rem);
+          line-height: 1.04;
+          letter-spacing: -0.06em;
+          font-weight: 800;
+          color: #171717;
+          font-family: 'Roboto Slab', 'Georgia', serif;
+        }
+
+        .academy-path-header h2 .accent {
+          color: #ff321e;
+        }
+
+        .academy-path-header p {
+          max-width: 680px;
+          margin: 0.8rem auto 0;
+          color: #596b85;
           font-size: 1.02rem;
           line-height: 1.7;
           letter-spacing: -0.02em;
+          font-family: 'Courier Prime', 'Courier New', monospace;
+          font-weight: 700;
         }
 
-        .academy-path-steps {
+        .academy-path-grid {
+          display: grid;
+          grid-template-columns: repeat(5, minmax(0, 1fr));
+          gap: 1rem;
+          align-items: stretch;
+        }
+
+        .path-card {
+          position: relative;
           display: flex;
           flex-direction: column;
-          gap: 0.85rem;
+          min-width: 0;
+          min-height: 340px;
+          padding: 1rem 1rem 0.9rem;
+          border: 1px solid #f4d9d0;
+          border-radius: 1.25rem;
+          background: rgba(255, 255, 255, 0.96);
+          box-shadow: 0 12px 28px rgba(23, 23, 23, 0.04);
+          transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+          overflow: hidden;
         }
 
-        .path-step-row {
+        .path-card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 20px 30px rgba(23, 23, 23, 0.08);
+          border-color: rgba(255, 50, 30, 0.2);
+        }
+
+        .path-card::after {
+          content: '';
+          position: absolute;
+          right: 0.9rem;
+          bottom: 0.9rem;
+          width: 10px;
+          height: 10px;
+          background: #ff321e;
+          border-radius: 2px;
+        }
+
+        .path-card-number {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 42px;
+          height: 32px;
+          border-radius: 999px;
+          background: rgba(255, 50, 30, 0.08);
+          color: #ff321e;
+          font-size: 0.7rem;
+          font-weight: 800;
+          letter-spacing: 0.08em;
+          font-family: 'Courier Prime', 'Courier New', monospace;
+        }
+
+        .path-card h3 {
+          margin-top: 1.1rem;
+          margin-bottom: 0.75rem;
+          color: #171717;
+          font-size: 1.04rem;
+          line-height: 1.28;
+          letter-spacing: -0.04em;
+          font-weight: 800;
+          font-family: 'Roboto Slab', 'Georgia', serif;
+        }
+
+        .path-card-desc {
+          margin: 0;
+          color: #596b85;
+          font-size: 0.9rem;
+          line-height: 1.6;
+          letter-spacing: -0.02em;
+          font-family: 'Courier Prime', 'Courier New', monospace;
+          font-weight: 700;
+        }
+
+        .path-card-divider {
+          width: 100%;
+          height: 1px;
+          background: rgba(255, 50, 30, 0.12);
+          margin: 1rem 0 0.8rem;
+        }
+
+        .path-card-bullets {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .path-card-bullets li {
           display: flex;
           align-items: flex-start;
-          gap: 1.1rem;
-          padding: 1.15rem 0;
-          border-top: 1px solid rgba(23, 23, 23, 0.08);
-          transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+          gap: 0.55rem;
+          color: #404d5d;
+          font-size: 0.8rem;
+          line-height: 1.45;
+          letter-spacing: -0.02em;
+          font-family: 'Courier Prime', 'Courier New', monospace;
+          font-weight: 700;
         }
 
-        .path-step-row:last-child {
-          border-bottom: 1px solid rgba(23, 23, 23, 0.08);
-        }
-
-        .path-step-row:hover {
-          transform: translateX(4px);
-          background: rgba(255, 255, 255, 0.14);
-        }
-
-        .path-step-number {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 72px;
-          min-width: 72px;
-          height: 72px;
-          border-radius: 0.9rem;
-          color: #171717;
-          font-size: 0.76rem;
-          font-weight: 800;
-          letter-spacing: 0.14em;
-          box-shadow: inset 0 0 0 1px rgba(23, 23, 23, 0.08), 0 12px 20px rgba(23, 23, 23, 0.04);
-        }
-
-        .path-step-body {
-          flex: 1;
-          min-width: 0;
-          padding-top: 0.25rem;
-        }
-
-        .path-step-top {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 0.75rem;
-        }
-
-        .path-step-label {
-          margin: 0;
-          color: #171717;
-          font-size: clamp(1.15rem, 1.9vw, 1.7rem);
-          line-height: 1.2;
-          letter-spacing: -0.06em;
-          font-weight: 800;
-        }
-
-        .path-step-arrow {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 30px;
-          height: 30px;
-          border-radius: 50%;
-          background: rgba(23, 23, 23, 0.04);
-          color: #171717;
+        .path-card-bullets li::before {
+          content: '';
+          width: 7px;
+          height: 7px;
+          margin-top: 0.36rem;
+          background: #ff321e;
+          border-radius: 2px;
           flex-shrink: 0;
         }
 
-        .path-step-body p:last-child {
-          margin: 0.5rem 0 0;
-          color: #4d5865;
-          font-size: 0.96rem;
-          line-height: 1.7;
-          letter-spacing: -0.02em;
+        .path-card-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: fit-content;
+          min-width: 118px;
+          margin-top: auto;
+          padding: 0.72rem 1.2rem;
+          border: 1px solid rgba(255, 50, 30, 0.8);
+          border-radius: 0.9rem;
+          background: transparent;
+          color: #171717;
+          font-size: 0.72rem;
+          font-weight: 800;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          text-decoration: none;
+          font-family: 'Courier Prime', 'Courier New', monospace;
+          transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+        }
+
+        .path-card-btn:hover {
+          background: #ff321e;
+          color: white;
+          transform: translateY(-2px);
+        }
+
+        .academy-courses {
+          background: #f5efe9;
+          padding-top: 4rem;
+          padding-bottom: 4rem;
         }
 
         .academy-course-header {
           display: flex;
           justify-content: space-between;
-          align-items: end;
-          gap: 1rem;
-          margin-bottom: 1.75rem;
+          align-items: flex-start;
+          gap: 1.5rem;
+          max-width: 1280px;
+          margin: 0 auto 2rem;
+        }
+
+        .academy-course-header-copy {
+          max-width: 760px;
+        }
+
+        .academy-course-header .academy-eyebrow {
+          margin-bottom: 0.8rem;
+          color: #ff2b12;
+          font-size: 0.72rem;
+          letter-spacing: 0.18em;
+          font-weight: 700;
+          font-family: 'Courier Prime', 'Courier New', monospace;
         }
 
         .academy-course-header h2 {
           margin: 0;
+          font-family: 'Roboto Slab', 'Georgia', serif;
+          font-size: clamp(2.1rem, 3vw, 4rem);
+          line-height: 1.05;
+          letter-spacing: -0.06em;
+          font-weight: 800;
+          color: #171717;
+        }
+
+        .academy-course-header h2 .accent-stop {
+          color: #ff2b12;
+        }
+
+        .academy-course-subtitle {
+          margin-top: 0.9rem;
+          max-width: 730px;
+          color: #64748b;
+          font-size: 1rem;
+          line-height: 1.7;
+          font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        .academy-course-header .academy-course-cta {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.7rem;
+          min-height: 48px;
+          padding: 0.8rem 1.35rem;
+          border: 1.5px solid #ff2b12;
+          border-radius: 999px;
+          background: #fff;
+          color: #ff2b12;
+          font-size: 0.8rem;
+          font-weight: 700;
+          letter-spacing: -0.01em;
+          text-decoration: none;
+          transition: all 0.2s ease;
+          white-space: nowrap;
+          box-shadow: none;
+          margin-top: 0.8rem;
+          font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        .academy-course-header .academy-course-cta:hover {
+          background: #ff2b12;
+          color: #fff;
+          transform: translateY(-1px);
+        }
+
+        .academy-course-header .academy-course-cta svg {
+          flex-shrink: 0;
         }
 
         .academy-final-cta {
-          padding-bottom: 5.5rem;
+          padding: 0.35rem 1rem 3.5rem;
         }
 
         .academy-final-cta-inner {
-          background: linear-gradient(135deg, #171717 0%, #20242b 100%);
-          border-radius: 2rem;
-          padding: 3rem 1.5rem;
+          max-width: 1240px;
+          margin: 0 auto;
+          background: #171717;
+          border-radius: 28px;
+          padding: 3rem 1.5rem 2.5rem;
           text-align: center;
           color: white;
-          box-shadow: 0 24px 40px rgba(17, 24, 39, 0.16);
+          box-shadow: 0 14px 22px rgba(17, 17, 17, 0.08);
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
         }
 
-        .academy-final-cta-inner p {
-          max-width: 600px;
-          margin: 1rem auto 0;
-          color: rgba(255,255,255,0.72);
-          line-height: 1.8;
-          font-size: 1.02rem;
+        .academy-final-cta-inner .academy-eyebrow {
+          display: inline-block;
+          margin-bottom: 1rem;
+          color: #ff2b12;
+          font-size: 0.72rem;
+          letter-spacing: 0.18em;
+          font-weight: 700;
+          text-transform: uppercase;
+          font-family: 'Inter', 'Segoe UI', sans-serif;
         }
 
         .academy-final-cta-inner h2 {
-          margin: 0;
-          font-size: clamp(2rem, 3vw, 3rem);
+          margin: 0 auto;
+          max-width: 760px;
+          font-size: clamp(2.1rem, 4vw, 4rem);
           line-height: 1.06;
           letter-spacing: -0.06em;
           font-weight: 800;
+          color: #ffffff;
+          font-family: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        .academy-final-cta-inner p {
+          max-width: 700px;
+          margin: 1rem auto 0;
+          color: rgba(255,255,255,0.74);
+          line-height: 1.8;
+          font-size: 1.02rem;
+          font-family: 'Inter', 'Segoe UI', sans-serif;
         }
 
         .academy-final-btns {
@@ -613,24 +833,51 @@ export default function AcademyPage() {
           justify-content: center;
           gap: 1rem;
           margin-top: 2rem;
+          opacity: 1 !important;
+          transform: none !important;
+          transition: none !important;
         }
 
-        .academy-btn-light {
+        .academy-btn-light,
+        .academy-btn-secondary {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 0.6rem;
+          gap: 0.7rem;
           min-height: 52px;
-          padding: 0.9rem 1.4rem;
+          padding: 0.9rem 1.5rem;
           border-radius: 999px;
-          background: #fff;
-          color: #171717;
           font-weight: 700;
-          transition: transform 0.2s ease;
+          font-family: 'Inter', 'Segoe UI', sans-serif;
+          transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+          text-decoration: none;
+        }
+
+        .academy-btn-light {
+          background: #ffffff;
+          color: #171717;
+          border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .academy-btn-light:hover {
-          transform: translateY(-2px);
+          background: #f3f4f6;
+          transform: translateY(-1px);
+        }
+
+        .academy-btn-secondary {
+          background: #ff2b12;
+          color: #ffffff;
+          border: 1px solid #ff2b12;
+        }
+
+        .academy-btn-secondary:hover {
+          background: #e1220f;
+          transform: translateY(-1px);
+        }
+
+        .academy-btn-light svg,
+        .academy-btn-secondary svg {
+          flex-shrink: 0;
         }
 
         @media (max-width: 1100px) {
@@ -638,13 +885,8 @@ export default function AcademyPage() {
             grid-template-columns: repeat(3, minmax(0, 1fr));
           }
 
-          .academy-path-shell {
-            grid-template-columns: 1fr;
-            gap: 2rem;
-          }
-
-          .academy-path-intro {
-            max-width: 100%;
+          .academy-path-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
           }
         }
 
@@ -652,9 +894,17 @@ export default function AcademyPage() {
           .academy-category-grid {
             grid-template-columns: repeat(2, minmax(0, 1fr));
           }
+
+          .academy-path-grid {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+          }
         }
 
         @media (max-width: 767px) {
+          .academy-path {
+            padding-top: 0.5rem;
+          }
+
           .academy-category-grid {
             grid-template-columns: 1fr;
             gap: 1rem;
@@ -711,7 +961,6 @@ export default function AcademyPage() {
             width: 100%;
           }
 
-          .academy-category-grid,
           .academy-path-grid {
             grid-template-columns: 1fr;
           }
@@ -719,10 +968,6 @@ export default function AcademyPage() {
           .academy-course-header {
             flex-direction: column;
             align-items: flex-start;
-          }
-
-          .path-step:not(:last-child)::after {
-            display: none;
           }
         }
 
@@ -733,8 +978,12 @@ export default function AcademyPage() {
           .academy-primary-btn,
           .academy-secondary-btn,
           .academy-btn-light,
+          .academy-btn-secondary,
           .category-box-card,
-          .category-box-card .card-illustration img {
+          .category-box-card .card-illustration img,
+          .path-card,
+          .academy-final-cta-inner,
+          .academy-final-btns {
             transition: none !important;
             animation: none !important;
             transform: none !important;
@@ -752,12 +1001,12 @@ export default function AcademyPage() {
               </div>
 
               <h1 className="academy-reveal" data-reveal>
-                <span className="academy-head-line academy-head-line-dark">Skills for a</span>
-                <span className="academy-head-line academy-head-line-accent">Better Tomorrow.</span>
+                <span className="academy-head-line academy-head-line-dark">Learn AI online</span>{' '}
+                <span className="academy-head-line academy-head-line-accent">for beginners.</span>
               </h1>
 
               <p className="academy-reveal" data-reveal style={{ '--reveal-delay': '120ms' }}>
-                Learn practical, future-ready skills with structured guidance, live learning support, and hands-on projects that help you build with confidence.
+                Claxic Academy helps beginners build practical AI and digital skills through clear learning, guided support and hands-on projects designed for real-world use.
               </p>
 
               <div className="academy-cta-row">
@@ -795,7 +1044,7 @@ export default function AcademyPage() {
             <div className="academy-section-head academy-reveal" data-reveal>
               <p className="academy-eyebrow">Learning categories</p>
               <h2 className="academy-section-title">Build skills that move you forward.</h2>
-              <p className="academy-category-subtitle">Explore practical skills for your next step.</p>
+              <p className="academy-category-subtitle">Explore AI learning and practical digital skills for your next step.</p>
             </div>
 
             <div className="academy-category-grid academy-reveal" data-reveal style={{ '--reveal-delay': '90ms' }}>
@@ -825,44 +1074,51 @@ export default function AcademyPage() {
 
         <section className="academy-path">
           <div className="academy-path-shell">
-            <div className="academy-path-intro academy-reveal" data-reveal>
-              <p className="academy-eyebrow">How you learn</p>
-              <h2 className="academy-section-title">From your first idea to real-world skills.</h2>
-              <p className="academy-path-copy">A practical learning journey designed to help you move from curiosity to confidence with clarity, feedback, and hands-on momentum.</p>
+            <div className="academy-path-header academy-reveal" data-reveal>
+              <p className="academy-eyebrow">Learning path</p>
+              <h2>
+                From learning to <span className="accent">real-world skills.</span>
+              </h2>
+              <p>A simple journey from learning the basics to building with confidence.</p>
             </div>
 
-            <div className="academy-path-steps">
-              {LEARNING_PATH.map(({ title, desc, accent }, index) => (
-                <div key={title} className="path-step-row academy-reveal" data-reveal style={{ '--reveal-delay': `${index * 100}ms` }}>
-                  <div className="path-step-number" style={{ background: `${accent}1A` }}>{`0${index + 1}`}</div>
-
-                  <div className="path-step-body">
-                    <div className="path-step-top">
-                      <p className="path-step-label">{title}</p>
-                      <span className="path-step-arrow" aria-hidden="true">
-                        <ArrowRight size={14} strokeWidth={2.5} />
-                      </span>
-                    </div>
-                    <p>{desc}</p>
-                  </div>
-                </div>
+            <div className="academy-path-grid">
+              {LEARNING_PATH.map(({ number, title, desc, bullets }, index) => (
+                <article key={title} className="path-card academy-reveal" data-reveal style={{ '--reveal-delay': `${index * 100}ms` }}>
+                  <span className="path-card-number">{number}</span>
+                  <h3>{title}</h3>
+                  <p className="path-card-desc">{desc}</p>
+                  <span className="path-card-divider" aria-hidden="true" />
+                  <ul className="path-card-bullets">
+                    {bullets.map((bullet) => (
+                      <li key={`${title}-${bullet}`}>{bullet}</li>
+                    ))}
+                  </ul>
+                  <a href="#featured-courses" className="path-card-btn">Learn More</a>
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="academy-courses bg-[#f4f5f6]" id="featured-courses">
+        <section className="academy-courses" id="featured-courses">
           <div className="academy-shell">
             <div className="academy-course-header academy-reveal" data-reveal>
-              <div>
-                <p className="academy-eyebrow">Featured courses</p>
-                <h2 className="academy-section-title">Choose a course that matches your next step.</h2>
+              <div className="academy-course-header-copy">
+                <p className="academy-eyebrow">FEATURED COURSES</p>
+                <h2>
+                  Choose a course that matches your next step<span className="accent-stop">.</span>
+                </h2>
+                <p className="academy-course-subtitle">
+                  Practical, beginner-friendly courses designed to help you build real skills and achieve your goals.
+                </p>
               </div>
 
               <WhatsAppButton
                 message="Hi Claxic Academy, I would like to know more about your available courses."
                 label="Ask About a Course"
                 variant="outline"
+                className="academy-course-cta"
               />
             </div>
 
@@ -870,30 +1126,6 @@ export default function AcademyPage() {
           </div>
         </section>
 
-        <section className="academy-final-cta">
-          <div className="academy-shell">
-            <div className="academy-final-cta-inner academy-reveal" data-reveal>
-              <p className="academy-eyebrow" style={{ color: '#ffaf9e', marginBottom: '1rem' }}>Start learning</p>
-              <h2>Start Your Learning Journey Today.</h2>
-              <p>Take the next step with practical learning designed to help you build real skills, confidence, and momentum.</p>
-
-              <div className="academy-final-btns">
-                <a href="#featured-courses" className="academy-btn-light">
-                  Explore courses
-                  <ArrowRight size={16} strokeWidth={2.5} aria-hidden="true" />
-                </a>
-
-                <div>
-                  <WhatsAppButton
-                    message="Hi Claxic Academy, I want to start learning and would like to know the next steps."
-                    label="Talk to Us"
-                    variant="primary"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </>
   );

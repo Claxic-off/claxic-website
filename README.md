@@ -226,18 +226,50 @@ claxic-website/
 
 The contact form validates all required fields on submit and on blur. Validation is accessible with ARIA attributes.
 
-**Submission options:**
-1. **With a form endpoint**: Set `VITE_FORM_ENDPOINT` in your `.env` to a service like [Formspree](https://formspree.io), [Basin](https://usebasin.com) or your own API.
-2. **Without an endpoint**: The form detects this and shows a WhatsApp fallback with the user's details pre-populated.
+**Default behaviour**: the frontend posts to `/api/contact`, which is a Cloudflare Pages Function. The request is only considered successful when the configured email provider confirms delivery.
 
-```env
-# Optional: form submission endpoint
-VITE_FORM_ENDPOINT=https://formspree.io/f/YOUR_FORM_ID
-```
+**Email delivery setup**:
+1. Add the public form endpoint in `.env`:
+   ```env
+   VITE_FORM_ENDPOINT=/api/contact
+   ```
+2. In Cloudflare Pages, configure server-side environment variables:
+   ```env
+   CONTACT_EMAIL_RECIPIENT=support.claxic@gmail.com
+   RESEND_API_KEY=your_resend_api_key
+   RESEND_FROM_EMAIL=noreply@yourdomain.com
+   ```
+3. Ensure the `RESEND_FROM_EMAIL` sender is verified in Resend for your domain. The recipient remains `support.claxic@gmail.com`.
+4. If the API key or sender email is not configured, the form shows a clear, honest error instead of claiming an email was sent.
+
+**Without a configured email provider**: The form falls back to a prefilled WhatsApp message and clearly states that email delivery is not configured yet.
 
 ---
 
 ## Deployment
+
+### Cloudflare Pages
+
+```bash
+npm run build
+```
+
+Upload the `dist/` folder and keep the Cloudflare Pages project configured with the following settings:
+
+- Build command: `npm run build`
+- Output directory: `dist`
+- Environment variables (server-side only):
+  ```env
+  CONTACT_EMAIL_RECIPIENT=support.claxic@gmail.com
+  RESEND_API_KEY=your_resend_api_key
+  RESEND_FROM_EMAIL=noreply@yourdomain.com
+  ```
+- Optional public variable:
+  ```env
+  VITE_FORM_ENDPOINT=/api/contact
+  ```
+
+**Important for SPA routing**: Keep Cloudflare Pages/Functions configured to serve `index.html` for unmatched routes.
 
 ### Netlify / Vercel
 

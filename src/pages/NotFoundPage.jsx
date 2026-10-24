@@ -1,9 +1,18 @@
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { ArrowRight } from 'lucide-react';
 
 export default function NotFoundPage() {
   return (
-    <section className="bg-white py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center min-h-[60vh] text-center">
+    <>
+      <SEO
+        title="Page Not Found | Claxic"
+        description="The page you requested could not be found."
+        canonicalPath="/404"
+        robots="noindex, follow"
+        ogType="website"
+      />
+      <section className="bg-white py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center min-h-[60vh] text-center">
       <div className="text-8xl font-black text-[#FF2B12] mb-4 leading-none">404</div>
       <h1 className="text-3xl font-black text-[#151515] mb-4">Page not found</h1>
       <p className="text-[#555B65] mb-8 max-w-md leading-relaxed">
@@ -25,5 +34,6 @@ export default function NotFoundPage() {
         </Link>
       </div>
     </section>
+    </>
   );
 }

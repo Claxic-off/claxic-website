@@ -51,10 +51,14 @@ export default function CourseCatalogue() {
 
   if (status === 'unconfigured') {
     return (
-      <div className="bg-[#FFF4D8] border border-yellow-200 rounded-2xl p-8 text-center max-w-xl mx-auto">
-        <BookOpen size={36} className="text-yellow-600 mx-auto mb-3" />
-        <h3 className="text-base font-bold text-[#151515] mb-2">Course catalogue coming soon</h3>
-        <p className="text-sm text-[#555B65]">
+      <div className="mx-auto max-w-5xl rounded-[22px] border border-[#f0c8b1] bg-[#fff5ef] px-6 py-10 text-center md:px-12 md:py-14">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-[#ff2b12] bg-[#fff7f3] text-[#ff2b12]">
+          <BookOpen size={26} strokeWidth={2.1} aria-hidden="true" />
+        </div>
+        <h3 className="mb-3 text-[1.05rem] font-bold text-[#171717] md:text-[1.2rem]" style={{ fontFamily: 'Roboto Slab, Georgia, serif' }}>
+          Course catalogue coming soon
+        </h3>
+        <p className="mx-auto max-w-2xl text-sm leading-7 text-[#64748B] md:text-base">
           Our course catalogue will be available here shortly. In the meantime, feel free to ask about specific courses via WhatsApp.
         </p>
       </div>
@@ -82,10 +86,14 @@ export default function CourseCatalogue() {
 
   if (status === 'empty') {
     return (
-      <div className="bg-[#FFF9F2] border border-gray-100 rounded-2xl p-8 text-center max-w-xl mx-auto">
-        <BookOpen size={36} className="text-[#FF2B12] mx-auto mb-3" />
-        <h3 className="text-base font-bold text-[#151515] mb-2">No courses published yet</h3>
-        <p className="text-sm text-[#555B65]">
+      <div className="mx-auto max-w-5xl rounded-[22px] border border-[#f0c8b1] bg-[#fff5ef] px-6 py-10 text-center md:px-12 md:py-14">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-[#ff2b12] bg-[#fff7f3] text-[#ff2b12]">
+          <BookOpen size={26} strokeWidth={2.1} aria-hidden="true" />
+        </div>
+        <h3 className="mb-3 text-[1.05rem] font-bold text-[#171717] md:text-[1.2rem]" style={{ fontFamily: 'Roboto Slab, Georgia, serif' }}>
+          No courses published yet
+        </h3>
+        <p className="mx-auto max-w-2xl text-sm leading-7 text-[#64748B] md:text-base">
           We're currently preparing our first courses. Contact us on WhatsApp to find out what's coming soon.
         </p>
       </div>

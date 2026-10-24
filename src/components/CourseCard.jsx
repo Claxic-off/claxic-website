@@ -1,12 +1,12 @@
+import { Link } from 'react-router-dom';
 import { BookOpen, Clock, Monitor, MessageCircle } from 'lucide-react';
+import { buildWhatsAppUrl, getWhatsAppConfig } from '../lib/whatsapp';
 
-const WHATSAPP_NUMBER = import.meta.env.VITE_CLAXIC_WHATSAPP || '';
+const { number: WHATSAPP_NUMBER } = getWhatsAppConfig();
 
-function buildWhatsAppUrl(courseTitle) {
+function buildCourseWhatsAppUrl(courseTitle) {
   const msg = `Hi Claxic Academy, I'm interested in the "${courseTitle}" course. Please share more details.`;
-  return WHATSAPP_NUMBER
-    ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`
-    : '#contact';
+  return buildWhatsAppUrl(WHATSAPP_NUMBER, msg);
 }
 
 const LEVEL_COLOURS = {
@@ -33,7 +33,7 @@ export default function CourseCard({ course }) {
   } = course;
 
   const levelColor = LEVEL_COLOURS[level] || 'bg-gray-100 text-gray-600';
-  const whatsappUrl = buildWhatsAppUrl(title);
+  const whatsappUrl = buildCourseWhatsAppUrl(title);
 
   return (
     <article className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 flex flex-col">
@@ -86,15 +86,25 @@ export default function CourseCard({ course }) {
 
         {/* CTA */}
         <div className="mt-auto pt-2">
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full flex items-center justify-center gap-2 bg-[#FF2B12] hover:bg-[#e02410] text-white text-sm font-bold py-2.5 rounded-xl transition-all duration-200 hover:shadow-md active:scale-95"
-          >
-            <MessageCircle size={15} strokeWidth={2.5} aria-hidden="true" />
-            Enquire About This Course
-          </a>
+          {whatsappUrl ? (
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 bg-[#FF2B12] hover:bg-[#e02410] text-white text-sm font-bold py-2.5 rounded-xl transition-all duration-200 hover:shadow-md active:scale-95"
+            >
+              <MessageCircle size={15} strokeWidth={2.5} aria-hidden="true" />
+              Enquire About This Course
+            </a>
+          ) : (
+            <Link
+              to="/contact"
+              className="w-full flex items-center justify-center gap-2 bg-[#FF2B12] hover:bg-[#e02410] text-white text-sm font-bold py-2.5 rounded-xl transition-all duration-200 hover:shadow-md active:scale-95"
+            >
+              <MessageCircle size={15} strokeWidth={2.5} aria-hidden="true" />
+              Enquire About This Course
+            </Link>
+          )}
         </div>
       </div>
     </article>

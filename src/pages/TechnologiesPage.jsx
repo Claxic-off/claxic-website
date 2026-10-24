@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 import { ArrowRight, Check, ExternalLink, Sparkles } from 'lucide-react';
 import techHeroImage from '../assets/09 Pixel-Art AI Robot Coding Workspace.png';
 import ServiceCard from '../components/ServiceCard';
@@ -100,6 +101,13 @@ export default function TechnologiesPage() {
 
   return (
     <>
+      <SEO
+        title="Claxic Technologies | Website Development and Custom Software Services in India"
+        description="Claxic Technologies builds custom websites, web apps and software for businesses in India. Explore website development, UX design, integrations and digital solutions."
+        canonicalPath="/technologies"
+        robots="index, follow"
+        ogType="website"
+      />
       <style>{`
         @keyframes techFloat {
           0%, 100% { transform: translateY(0px); }
@@ -772,12 +780,12 @@ export default function TechnologiesPage() {
               </p>
 
               <h1 className="tech-hero-title">
-                <span className="tech-reveal block text-[#171717]" data-reveal style={{ '--reveal-delay': '90ms' }}>TECHNOLOGY THAT TURNS</span>
-                <span className="tech-reveal block text-[#FF2B12]" data-reveal style={{ '--reveal-delay': '180ms' }}>IDEAS INTO REALITY.</span>
+                <span className="tech-reveal block text-[#171717]" data-reveal style={{ '--reveal-delay': '90ms' }}>CUSTOM WEBSITE</span>{' '}
+                <span className="tech-reveal block text-[#FF2B12]" data-reveal style={{ '--reveal-delay': '180ms' }}>DEVELOPMENT SERVICES.</span>
               </h1>
 
               <p className="tech-reveal tech-hero-description mt-6 max-w-[560px] text-[#53657A]" data-reveal style={{ '--reveal-delay': '260ms' }}>
-                We design and develop modern websites, web applications, custom software and AI-powered solutions that solve real-world problems.
+                Claxic Technologies builds custom websites, web applications and digital solutions for businesses that need practical, reliable technology and a clearer online presence.
               </p>
 
               <div className="mt-7 flex flex-wrap gap-3.5">
@@ -822,16 +830,16 @@ export default function TechnologiesPage() {
             <div className="text-center">
               <p className="tech-reveal tech-section-eyebrow text-[#FF2B12]" data-reveal>About Claxic Technologies</p>
               <h2 className="tech-reveal tech-section-title mt-4 text-[#202020]" data-reveal style={{ '--reveal-delay': '120ms' }}>
-                Technology with a purpose.
+                Website development and digital product solutions.
               </h2>
             </div>
 
             <p className="tech-reveal tech-section-copy mx-auto mt-6 max-w-3xl text-[#566174]" data-reveal style={{ '--reveal-delay': '220ms' }}>
-              Claxic Technologies is the software development and AI solutions division of Claxic. We turn ideas and requirements into practical digital experiences through thoughtful design, modern engineering and intelligent technology.
+              Claxic Technologies helps businesses and founders build custom websites, digital products and software that support growth, communication and day-to-day operations.
             </p>
 
             <p className="tech-reveal tech-section-copy mx-auto mt-5 max-w-3xl text-[#566174]" data-reveal style={{ '--reveal-delay': '320ms' }}>
-              Our focus is simple: build useful technology that makes everyday tasks and digital experiences better.
+              Whether you need a business website, a web application, UI/UX support, integrations or a custom software solution, we can help you shape the right approach and move from idea to implementation.
             </p>
           </div>
         </section>

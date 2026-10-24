@@ -1,8 +1,12 @@
-
 import { useEffect } from 'react';
 
 const SITE_URL = 'https://www.claxic.in';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/logo.png`;
+
+// Public URL for the founder photo.
+// The image is served from the existing src/assets/Profile/Nithesh.jpeg import.
+const FOUNDER_IMAGE = `${SITE_URL}/images/nithesh-devaraj.jpg`;
+
 const LINKEDIN_URL =
   'https://www.linkedin.com/in/nithesh-deva-02736736b';
 
@@ -11,9 +15,11 @@ function ensureMetaTag(selector, attributes, tagName = 'meta') {
 
   if (!tag) {
     tag = document.createElement(tagName);
+
     Object.entries(attributes).forEach(([key, value]) => {
       tag.setAttribute(key, value);
     });
+
     document.head.appendChild(tag);
     return tag;
   }
@@ -64,11 +70,18 @@ export default function SEO({
 }) {
   useEffect(() => {
     const safeTitle = title || 'Claxic';
+
     const safeDescription =
       description ||
       'Claxic builds modern digital solutions and practical learning experiences.';
 
+    const isFounderPage =
+      canonicalPath.replace(/\/+$/, '') === '/founder';
+
     const canonicalUrl = normalizeCanonicalPath(canonicalPath);
+    const ogImage = isFounderPage
+      ? FOUNDER_IMAGE
+      : DEFAULT_OG_IMAGE;
 
     document.title = safeTitle;
 
@@ -109,7 +122,7 @@ export default function SEO({
 
     ensureMetaTag('meta[property="og:image"]', {
       property: 'og:image',
-      content: DEFAULT_OG_IMAGE,
+      content: ogImage,
     });
 
     ensureMetaTag('meta[name="twitter:card"]', {
@@ -129,7 +142,7 @@ export default function SEO({
 
     ensureMetaTag('meta[name="twitter:image"]', {
       name: 'twitter:image',
-      content: DEFAULT_OG_IMAGE,
+      content: ogImage,
     });
 
     ensureMetaTag(
@@ -141,8 +154,7 @@ export default function SEO({
       'link'
     );
 
-    // Profile structured data for the dedicated founder page.
-    if (canonicalPath === '/founder') {
+    if (isFounderPage) {
       ensureJsonLd({
         '@context': 'https://schema.org',
         '@type': 'ProfilePage',
@@ -152,6 +164,7 @@ export default function SEO({
           '@type': 'Person',
           '@id': `${SITE_URL}/founder#person`,
           name: 'Nithesh Devaraj',
+          image: FOUNDER_IMAGE,
           jobTitle: 'Founder & CEO',
           url: `${SITE_URL}/founder`,
           sameAs: [LINKEDIN_URL],

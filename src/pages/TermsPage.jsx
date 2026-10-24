@@ -6,12 +6,12 @@ export default function TermsPage() {
   return (
     <>
       <SEO
-        title="Terms & Conditions | Claxic"
-        description="Read Claxic's Terms and Conditions covering website use, services, educational content, and legal responsibilities for Claxic Technologies and Claxic Academy."
-        canonicalPath="/terms"
-        robots="index, follow"
-        ogType="website"
-      />
+  title="Terms & Conditions | Claxic Technologies"
+  description="Read the Terms and Conditions for Claxic Technologies and Claxic Academy, including website use, software development services, educational content, payments and user responsibilities."
+  canonicalPath="/terms"
+  robots="index, follow"
+  ogType="website"
+/>
       <section className="legal-page bg-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="legal-shell max-w-4xl mx-auto">
         <Link to="/" className="inline-flex items-center gap-2 text-sm text-[#555B65] hover:text-[#FF2B12] mb-8 transition-colors">
@@ -181,10 +181,4 @@ export default function TermsPage() {
   );
 }
 
-<SEO
-  title="Terms & Conditions | Claxic Technologies"
-  description="Read the Terms and Conditions for Claxic Technologies and Claxic Academy, including website use, software development services, educational content, payments and user responsibilities."
-  canonicalPath="/terms"
-  robots="index, follow"
-  ogType="website"
-/>
+

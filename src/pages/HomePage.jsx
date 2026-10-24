@@ -58,13 +58,13 @@ const HOW_WE_HELP = [
 export default function HomePage() {
   return (
     <>
-      <SEO
-        title="Claxic | Technology Solutions & AI Learning"
-        description="Claxic provides technology solutions and practical AI learning experiences for individuals, businesses, and future creators."
-        canonicalPath="/"
-        robots="index, follow"
-        ogType="website"
-      />
+    <SEO
+  title="Claxic Technologies | Web & Software Development"
+  description="Claxic Technologies builds custom websites, web applications and software solutions for businesses. Explore our digital services and practical AI learning at Claxic Academy."
+  canonicalPath="/"
+  robots="index, follow"
+  ogType="website"
+/>
       {/* ── Hero ── */}
       <section className="bg-white pt-6 pb-12 sm:pt-8 sm:pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -272,10 +272,3 @@ export default function HomePage() {
     </>
   );
 }
-<SEO
-  title="Claxic Technologies | Web & Software Development"
-  description="Claxic Technologies builds custom websites, web applications and software solutions for businesses. Explore our digital services and practical AI learning at Claxic Academy."
-  canonicalPath="/"
-  robots="index, follow"
-  ogType="website"
-/>

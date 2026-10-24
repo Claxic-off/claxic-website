@@ -6,12 +6,12 @@ export default function MembersPage() {
   return (
     <>
       <SEO
-        title="Our Team | Claxic"
-        description="Meet the team behind Claxic and learn more about the people building technology solutions and learning experiences."
-        canonicalPath="/members"
-        robots="index, follow"
-        ogType="website"
-      />
+  title="Our Team | Claxic Technologies"
+  description="Meet the people behind Claxic Technologies and Claxic Academy, working on software development, digital solutions and practical learning experiences."
+  canonicalPath="/members"
+  robots="index, follow"
+  ogType="website"
+/>
       {/* ── Hero ── */}
       <section className="bg-white pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b border-gray-100">
         <div className="max-w-4xl mx-auto text-center">
@@ -96,10 +96,3 @@ export default function MembersPage() {
   );
 }
 
-<SEO
-  title="Our Team | Claxic Technologies"
-  description="Meet the people behind Claxic Technologies and Claxic Academy, working on software development, digital solutions and practical learning experiences."
-  canonicalPath="/members"
-  robots="index, follow"
-  ogType="website"
-/>

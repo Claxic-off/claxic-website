@@ -180,3 +180,11 @@ export default function TermsPage() {
     </>
   );
 }
+
+<SEO
+  title="Terms & Conditions | Claxic Technologies"
+  description="Read the Terms and Conditions for Claxic Technologies and Claxic Academy, including website use, software development services, educational content, payments and user responsibilities."
+  canonicalPath="/terms"
+  robots="index, follow"
+  ogType="website"
+/>

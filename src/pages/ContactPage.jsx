@@ -31,13 +31,13 @@ const WHATSAPP_URL = buildWhatsAppUrl(
 export default function ContactPage() {
   return (
     <>
-      <SEO
-        title="Contact Claxic"
-        description="Contact Claxic for software projects, course enquiries, partnerships, and general questions about our technology and education services."
-        canonicalPath="/contact"
-        robots="index, follow"
-        ogType="website"
-      />
+  <SEO
+  title="Contact Claxic Technologies | Business & Software Enquiries"
+  description="Contact Claxic Technologies for website development, web applications, custom software, AI/ML solutions, partnerships and Claxic Academy course enquiries."
+  canonicalPath="/contact"
+  robots="index, follow"
+  ogType="website"
+/>
       <section className="bg-[#F3EEE9] px-4 py-8 sm:px-6 lg:px-8 lg:py-12">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10">
@@ -168,10 +168,3 @@ export default function ContactPage() {
   );
 }
 
-<SEO
-  title="Contact Claxic Technologies | Business & Software Enquiries"
-  description="Contact Claxic Technologies for website development, web applications, custom software, AI/ML solutions, partnerships and Claxic Academy course enquiries."
-  canonicalPath="/contact"
-  robots="index, follow"
-  ogType="website"
-/>

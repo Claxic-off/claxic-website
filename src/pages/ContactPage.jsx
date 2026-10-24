@@ -167,3 +167,11 @@ export default function ContactPage() {
     </>
   );
 }
+
+<SEO
+  title="Contact Claxic Technologies | Business & Software Enquiries"
+  description="Contact Claxic Technologies for website development, web applications, custom software, AI/ML solutions, partnerships and Claxic Academy course enquiries."
+  canonicalPath="/contact"
+  robots="index, follow"
+  ogType="website"
+/>

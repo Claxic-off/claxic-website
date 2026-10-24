@@ -989,3 +989,10 @@ export default function TechnologiesPage() {
     </>
   );
 }
+<SEO
+  title="Claxic Technologies | Web & Software Development"
+  description="Claxic Technologies builds custom websites, web applications and software solutions for businesses in India. Explore our development and digital services."
+  canonicalPath="/technologies"
+  robots="index, follow"
+  ogType="website"
+/>

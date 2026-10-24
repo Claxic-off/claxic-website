@@ -102,12 +102,12 @@ export default function TechnologiesPage() {
   return (
     <>
       <SEO
-        title="Claxic Technologies | Website Development and Custom Software Services in India"
-        description="Claxic Technologies builds custom websites, web apps and software for businesses in India. Explore website development, UX design, integrations and digital solutions."
-        canonicalPath="/technologies"
-        robots="index, follow"
-        ogType="website"
-      />
+  title="Claxic Technologies | Web & Software Development"
+  description="Claxic Technologies builds custom websites, web applications and software solutions for businesses in India. Explore our development and digital services."
+  canonicalPath="/technologies"
+  robots="index, follow"
+  ogType="website"
+/>
       <style>{`
         @keyframes techFloat {
           0%, 100% { transform: translateY(0px); }
@@ -989,10 +989,4 @@ export default function TechnologiesPage() {
     </>
   );
 }
-<SEO
-  title="Claxic Technologies | Web & Software Development"
-  description="Claxic Technologies builds custom websites, web applications and software solutions for businesses in India. Explore our development and digital services."
-  canonicalPath="/technologies"
-  robots="index, follow"
-  ogType="website"
-/>
+

@@ -59,7 +59,7 @@ export const MEMBERS = [
     role: 'Full Stack Developer',
     department: 'Core',
     avatar: jiteshAvatar,
-    badge: 'TEAM MEMBER',
+    badge: 'DEVELOPER',
     bio: 'Jitesh is a BCA student and Full Stack Developer passionate about building modern web applications using contemporary technologies and AI-powered development tools. He contributes to both management and development at Claxic, helping transform ideas into practical digital experiences.',
     skills: ['React.js', 'Node.js', 'Next.js', 'Tailwind CSS', 'TypeScript', 'GitHub', 'AI-Powered Development Tools'],
     status: 'Claxic Technologies | Claxic Academy',

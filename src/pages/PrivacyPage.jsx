@@ -218,3 +218,11 @@ export default function PrivacyPage() {
     </>
   );
 }
+
+<SEO
+  title="Privacy Policy | Claxic Technologies"
+  description="Read the Claxic Technologies and Claxic Academy Privacy Policy to understand how we handle personal information, website enquiries, data security and privacy requests."
+  canonicalPath="/privacy"
+  robots="index, follow"
+  ogType="website"
+/>

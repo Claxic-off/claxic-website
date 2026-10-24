@@ -1,4 +1,4 @@
-
+import nitheshPhoto from '../assets/Profile/Nithesh.jpeg';
 import SEO from '../components/SEO';
 
 const FounderPage = () => {
@@ -27,6 +27,7 @@ const FounderPage = () => {
         ogType="profile"
       />
 
+      {/* Founder Hero Section */}
       <section className="mx-auto max-w-6xl px-6 py-16 sm:py-24">
         <div className="grid items-center gap-12 md:grid-cols-[1.4fr_0.8fr]">
           <div>
@@ -68,17 +69,17 @@ const FounderPage = () => {
             </div>
           </div>
 
+          {/* Founder Profile Card */}
           <div className="mx-auto w-full max-w-sm">
             <div className="rounded-2xl border border-slate-200 bg-white p-8 text-center shadow-sm">
-              <div
-                className="mx-auto flex h-28 w-28 items-center justify-center rounded-full text-4xl font-extrabold"
-                style={{
-                  backgroundColor: '#fff0ed',
-                  color: '#ff321e',
-                }}
-              >
-                ND
-              </div>
+              <img
+                src={nitheshPhoto}
+                alt="Nithesh Devaraj, Founder and CEO of Claxic Technologies"
+                className="mx-auto h-36 w-36 rounded-full border-4 border-orange-100 object-cover object-center shadow-sm"
+                width={144}
+                height={144}
+                fetchPriority="high"
+              />
 
               <h2 className="mt-5 text-xl font-bold text-slate-950">
                 Nithesh Devaraj
@@ -104,6 +105,7 @@ const FounderPage = () => {
         </div>
       </section>
 
+      {/* About Section */}
       <section className="border-y border-slate-200 bg-slate-50">
         <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
           <p
@@ -141,6 +143,7 @@ const FounderPage = () => {
         </div>
       </section>
 
+      {/* Skills Section */}
       <section className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
         <p
           className="mb-3 text-sm font-bold uppercase tracking-widest"
@@ -165,6 +168,7 @@ const FounderPage = () => {
         </div>
       </section>
 
+      {/* Claxic Vision Section */}
       <section className="bg-slate-950 text-white">
         <div className="mx-auto max-w-6xl px-6 py-16 sm:py-20">
           <p

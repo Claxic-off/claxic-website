@@ -49,3 +49,11 @@ export default function FAQPage() {
     </>
   );
 }
+
+<SEO
+  title="FAQs | Claxic Technologies & Claxic Academy"
+  description="Find answers to common questions about Claxic Technologies services, website and software development, Claxic Academy courses, and how to contact our team."
+  canonicalPath="/faq"
+  robots="index, follow"
+  ogType="website"
+/>

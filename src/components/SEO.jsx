@@ -5,7 +5,7 @@ const DEFAULT_OG_IMAGE = `${SITE_URL}/logo.png`;
 
 // Public URL for the founder photo.
 // The image is served from the existing src/assets/Profile/Nithesh.jpeg import.
-const FOUNDER_IMAGE = `${SITE_URL}/images/nithesh-devaraj.jpg`;
+const FOUNDER_IMAGE = `${SITE_URL}/images/Nithesh.jpeg`;
 
 const LINKEDIN_URL =
   'https://www.linkedin.com/in/nithesh-deva-02736736b';

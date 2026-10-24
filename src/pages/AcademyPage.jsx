@@ -92,10 +92,10 @@ export default function AcademyPage() {
   }, []);
 
   return (
-    <>
+    <>   
       <SEO
-        title="Claxic Academy | Learn AI Online for Beginners in India"
-        description="Learn AI online with beginner-friendly courses from Claxic Academy. Explore practical AI tools, generative AI skills, and project-based learning designed for real-world use."
+        title="Claxic Academy | AI, Web Development & Data Science"
+        description="Learn AI, web development and data science with practical beginner-friendly courses from Claxic Academy. Build digital skills through guided learning and hands-on projects."
         canonicalPath="/academy"
         robots="index, follow"
         ogType="website"
@@ -1130,10 +1130,3 @@ export default function AcademyPage() {
     </>
   );
 }
-<SEO
-  title="Claxic Academy | AI, Web Development & Data Science"
-  description="Learn AI, web development and data science with practical beginner-friendly courses from Claxic Academy. Build digital skills through guided learning and hands-on projects."
-  canonicalPath="/academy"
-  robots="index, follow"
-  ogType="website"
-/>

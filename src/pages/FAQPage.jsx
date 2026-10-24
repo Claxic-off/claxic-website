@@ -7,12 +7,12 @@ export default function FAQPage() {
   return (
     <>
       <SEO
-        title="Frequently Asked Questions | Claxic"
-        description="Find answers to frequent questions about Claxic Technologies, Claxic Academy, and how to get in touch with the team."
-        canonicalPath="/faq"
-        robots="index, follow"
-        ogType="website"
-      />
+  title="FAQs | Claxic Technologies & Claxic Academy"
+  description="Find answers to common questions about Claxic Technologies services, website and software development, Claxic Academy courses, and how to contact our team."
+  canonicalPath="/faq"
+  robots="index, follow"
+  ogType="website"
+/>
       {/* ── Hero ── */}
       <section className="bg-white pt-14 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
@@ -50,10 +50,3 @@ export default function FAQPage() {
   );
 }
 
-<SEO
-  title="FAQs | Claxic Technologies & Claxic Academy"
-  description="Find answers to common questions about Claxic Technologies services, website and software development, Claxic Academy courses, and how to contact our team."
-  canonicalPath="/faq"
-  robots="index, follow"
-  ogType="website"
-/>

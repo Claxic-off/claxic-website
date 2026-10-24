@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 
 const SITE_URL = 'https://www.claxic.in';
@@ -31,8 +32,25 @@ function normalizeCanonicalPath(canonicalPath) {
   if (!canonicalPath) return `${SITE_URL}/`;
 
   const sanitized = canonicalPath.split(/[?#]/)[0];
-  const trimmed = sanitized.startsWith('/') ? sanitized : `/${sanitized}`;
+  const trimmed = sanitized.startsWith('/')
+    ? sanitized
+    : `/${sanitized}`;
+
   return `${SITE_URL}${trimmed === '' ? '/' : trimmed}`;
+}
+
+function ensureJsonLd(data) {
+  const selector = 'script[data-claxic-jsonld="true"]';
+  let script = document.head.querySelector(selector);
+
+  if (!script) {
+    script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.setAttribute('data-claxic-jsonld', 'true');
+    document.head.appendChild(script);
+  }
+
+  script.textContent = JSON.stringify(data);
 }
 
 export default function SEO({
@@ -44,7 +62,9 @@ export default function SEO({
 }) {
   useEffect(() => {
     const safeTitle = title || 'Claxic';
-    const safeDescription = description || 'Claxic builds modern digital solutions and practical learning experiences.';
+    const safeDescription =
+      description ||
+      'Claxic builds modern digital solutions and practical learning experiences.';
     const canonicalUrl = normalizeCanonicalPath(canonicalPath);
 
     document.title = safeTitle;
@@ -81,7 +101,7 @@ export default function SEO({
 
     ensureMetaTag('meta[property="og:site_name"]', {
       property: 'og:site_name',
-      content: 'Claxic',
+      content: 'Claxic Technologies',
     });
 
     ensureMetaTag('meta[property="og:image"]', {
@@ -109,10 +129,37 @@ export default function SEO({
       content: DEFAULT_OG_IMAGE,
     });
 
-    ensureMetaTag('link[rel="canonical"]', {
-      rel: 'canonical',
-      href: canonicalUrl,
-    }, 'link');
+    ensureMetaTag(
+      'link[rel="canonical"]',
+      {
+        rel: 'canonical',
+        href: canonicalUrl,
+      },
+      'link'
+    );
+
+    // Founder structured data for the Members page.
+    const jsonLdSelector = 'script[data-claxic-jsonld="true"]';
+
+    if (canonicalPath === '/members') {
+      ensureJsonLd({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Nithesh Devaraj',
+        jobTitle: 'Founder & CEO',
+        url: `${SITE_URL}/members`,
+        image: `${SITE_URL}/logo.png`,
+        worksFor: {
+          '@type': 'Organization',
+          name: 'Claxic Technologies',
+          url: SITE_URL,
+        },
+        description:
+          'Nithesh Devaraj is the Founder and CEO of Claxic Technologies, working on software development, digital products and AI-driven solutions.',
+      });
+    } else {
+      removeMetaTag(jsonLdSelector);
+    }
 
     return () => {
       removeMetaTag('meta[name="description"]');
@@ -128,6 +175,7 @@ export default function SEO({
       removeMetaTag('meta[name="twitter:description"]');
       removeMetaTag('meta[name="twitter:image"]');
       removeMetaTag('link[rel="canonical"]');
+      removeMetaTag('script[data-claxic-jsonld="true"]');
     };
   }, [title, description, canonicalPath, robots, ogType]);
 

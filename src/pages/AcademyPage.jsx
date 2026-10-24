@@ -1130,3 +1130,10 @@ export default function AcademyPage() {
     </>
   );
 }
+<SEO
+  title="Claxic Academy | AI, Web Development & Data Science"
+  description="Learn AI, web development and data science with practical beginner-friendly courses from Claxic Academy. Build digital skills through guided learning and hands-on projects."
+  canonicalPath="/academy"
+  robots="index, follow"
+  ogType="website"
+/>

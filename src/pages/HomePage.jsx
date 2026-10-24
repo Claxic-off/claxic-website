@@ -272,3 +272,10 @@ export default function HomePage() {
     </>
   );
 }
+<SEO
+  title="Claxic Technologies | Web & Software Development"
+  description="Claxic Technologies builds custom websites, web applications and software solutions for businesses. Explore our digital services and practical AI learning at Claxic Academy."
+  canonicalPath="/"
+  robots="index, follow"
+  ogType="website"
+/>

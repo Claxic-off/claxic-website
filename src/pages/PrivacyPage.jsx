@@ -5,13 +5,13 @@ import { ArrowLeft } from 'lucide-react';
 export default function PrivacyPage() {
   return (
     <>
-      <SEO
-        title="Privacy Policy | Claxic"
-        description="Read Claxic's Privacy Policy covering personal information, website use, contact enquiries, and privacy practices across Claxic Technologies and Claxic Academy."
-        canonicalPath="/privacy"
-        robots="index, follow"
-        ogType="website"
-      />
+    <SEO
+  title="Privacy Policy | Claxic Technologies"
+  description="Read the Claxic Technologies and Claxic Academy Privacy Policy to understand how we handle personal information, website enquiries, data security and privacy requests."
+  canonicalPath="/privacy"
+  robots="index, follow"
+  ogType="website"
+/>
       <section className="legal-page bg-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="legal-shell max-w-4xl mx-auto">
         <Link to="/" className="inline-flex items-center gap-2 text-sm text-[#555B65] hover:text-[#FF2B12] mb-8 transition-colors">
@@ -219,10 +219,3 @@ export default function PrivacyPage() {
   );
 }
 
-<SEO
-  title="Privacy Policy | Claxic Technologies"
-  description="Read the Claxic Technologies and Claxic Academy Privacy Policy to understand how we handle personal information, website enquiries, data security and privacy requests."
-  canonicalPath="/privacy"
-  robots="index, follow"
-  ogType="website"
-/>

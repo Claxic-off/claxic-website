@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 
 const SITE_URL = 'https://www.claxic.in';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/logo.png`;
+const LINKEDIN_URL =
+  'https://www.linkedin.com/in/nithesh-deva-02736736b';
 
 function ensureMetaTag(selector, attributes, tagName = 'meta') {
   let tag = document.head.querySelector(selector);
@@ -36,7 +38,7 @@ function normalizeCanonicalPath(canonicalPath) {
     ? sanitized
     : `/${sanitized}`;
 
-  return `${SITE_URL}${trimmed === '' ? '/' : trimmed}`;
+  return `${SITE_URL}${trimmed || '/'}`;
 }
 
 function ensureJsonLd(data) {
@@ -65,6 +67,7 @@ export default function SEO({
     const safeDescription =
       description ||
       'Claxic builds modern digital solutions and practical learning experiences.';
+
     const canonicalUrl = normalizeCanonicalPath(canonicalPath);
 
     document.title = safeTitle;
@@ -138,27 +141,31 @@ export default function SEO({
       'link'
     );
 
-    // Founder structured data for the Members page.
-    const jsonLdSelector = 'script[data-claxic-jsonld="true"]';
-
-    if (canonicalPath === '/members') {
+    // Profile structured data for the dedicated founder page.
+    if (canonicalPath === '/founder') {
       ensureJsonLd({
         '@context': 'https://schema.org',
-        '@type': 'Person',
-        name: 'Nithesh Devaraj',
-        jobTitle: 'Founder & CEO',
-        url: `${SITE_URL}/members`,
-        image: `${SITE_URL}/logo.png`,
-        worksFor: {
-          '@type': 'Organization',
-          name: 'Claxic Technologies',
-          url: SITE_URL,
+        '@type': 'ProfilePage',
+        name: safeTitle,
+        url: canonicalUrl,
+        mainEntity: {
+          '@type': 'Person',
+          '@id': `${SITE_URL}/founder#person`,
+          name: 'Nithesh Devaraj',
+          jobTitle: 'Founder & CEO',
+          url: `${SITE_URL}/founder`,
+          sameAs: [LINKEDIN_URL],
+          worksFor: {
+            '@type': 'Organization',
+            '@id': `${SITE_URL}/#organization`,
+            name: 'Claxic Technologies',
+            url: `${SITE_URL}/`,
+          },
+          description: safeDescription,
         },
-        description:
-          'Nithesh Devaraj is the Founder and CEO of Claxic Technologies, working on software development, digital products and AI-driven solutions.',
       });
     } else {
-      removeMetaTag(jsonLdSelector);
+      removeMetaTag('script[data-claxic-jsonld="true"]');
     }
 
     return () => {

@@ -1,11 +1,9 @@
+
 import { useEffect } from 'react';
 
 const SITE_URL = 'https://www.claxic.in';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/logo.png`;
-
-// Public URL for the founder photo.
-// The image is served from the existing src/assets/Profile/Nithesh.jpeg import.
-const FOUNDER_IMAGE = `${SITE_URL}/images/Nithesh.jpeg`;
+const FOUNDER_IMAGE = `${SITE_URL}/Nithesh.jpeg`;
 
 const LINKEDIN_URL =
   'https://www.linkedin.com/in/nithesh-deva-02736736b';
@@ -15,11 +13,9 @@ function ensureMetaTag(selector, attributes, tagName = 'meta') {
 
   if (!tag) {
     tag = document.createElement(tagName);
-
     Object.entries(attributes).forEach(([key, value]) => {
       tag.setAttribute(key, value);
     });
-
     document.head.appendChild(tag);
     return tag;
   }
@@ -32,8 +28,7 @@ function ensureMetaTag(selector, attributes, tagName = 'meta') {
 }
 
 function removeMetaTag(selector) {
-  const tag = document.head.querySelector(selector);
-  if (tag) tag.remove();
+  document.head.querySelector(selector)?.remove();
 }
 
 function normalizeCanonicalPath(canonicalPath) {
@@ -47,14 +42,14 @@ function normalizeCanonicalPath(canonicalPath) {
   return `${SITE_URL}${trimmed || '/'}`;
 }
 
-function ensureJsonLd(data) {
-  const selector = 'script[data-claxic-jsonld="true"]';
+function ensureJsonLd(data, id) {
+  const selector = `script[data-claxic-jsonld="${id}"]`;
   let script = document.head.querySelector(selector);
 
   if (!script) {
     script = document.createElement('script');
     script.type = 'application/ld+json';
-    script.setAttribute('data-claxic-jsonld', 'true');
+    script.setAttribute('data-claxic-jsonld', id);
     document.head.appendChild(script);
   }
 
@@ -69,16 +64,19 @@ export default function SEO({
   ogType = 'website',
 }) {
   useEffect(() => {
-    const safeTitle = title || 'Claxic';
+    const safeTitle = title || 'Claxic Technologies';
 
     const safeDescription =
       description ||
-      'Claxic builds modern digital solutions and practical learning experiences.';
+      'Claxic Technologies builds modern digital solutions and practical learning experiences.';
 
-    const isFounderPage =
-      canonicalPath.replace(/\/+$/, '') === '/founder';
+    const normalizedPath =
+      canonicalPath.replace(/\/+$/, '') || '/';
 
+    const isFounderPage = normalizedPath === '/founder';
+    const isHomePage = normalizedPath === '/';
     const canonicalUrl = normalizeCanonicalPath(canonicalPath);
+
     const ogImage = isFounderPage
       ? FOUNDER_IMAGE
       : DEFAULT_OG_IMAGE;
@@ -154,31 +152,69 @@ export default function SEO({
       'link'
     );
 
-    if (isFounderPage) {
-      ensureJsonLd({
-        '@context': 'https://schema.org',
-        '@type': 'ProfilePage',
-        name: safeTitle,
-        url: canonicalUrl,
-        mainEntity: {
-          '@type': 'Person',
-          '@id': `${SITE_URL}/founder#person`,
-          name: 'Nithesh Devaraj',
-          image: FOUNDER_IMAGE,
-          jobTitle: 'Founder & CEO',
-          url: `${SITE_URL}/founder`,
-          sameAs: [LINKEDIN_URL],
-          worksFor: {
-            '@type': 'Organization',
-            '@id': `${SITE_URL}/#organization`,
-            name: 'Claxic Technologies',
-            url: `${SITE_URL}/`,
-          },
+    // Company identity: homepage only.
+    if (isHomePage) {
+      ensureJsonLd(
+        {
+          '@context': 'https://schema.org',
+          '@type': 'Organization',
+          '@id': `${SITE_URL}/#organization`,
+          name: 'Claxic Technologies',
+          url: `${SITE_URL}/`,
+          logo: `${SITE_URL}/logo.png`,
           description: safeDescription,
+          founder: {
+            '@type': 'Person',
+            '@id': `${SITE_URL}/founder#person`,
+            name: 'Nithesh Devaraj',
+            url: `${SITE_URL}/founder`,
+          },
+          sameAs: [LINKEDIN_URL],
+          subOrganization: {
+            '@type': 'Organization',
+            name: 'Claxic Academy',
+            url: `${SITE_URL}/academy`,
+          },
         },
-      });
+        'organization'
+      );
     } else {
-      removeMetaTag('script[data-claxic-jsonld="true"]');
+      removeMetaTag(
+        'script[data-claxic-jsonld="organization"]'
+      );
+    }
+
+    // Founder identity: founder page only.
+    if (isFounderPage) {
+      ensureJsonLd(
+        {
+          '@context': 'https://schema.org',
+          '@type': 'ProfilePage',
+          name: safeTitle,
+          url: canonicalUrl,
+          mainEntity: {
+            '@type': 'Person',
+            '@id': `${SITE_URL}/founder#person`,
+            name: 'Nithesh Devaraj',
+            image: FOUNDER_IMAGE,
+            jobTitle: 'Founder & CEO',
+            url: `${SITE_URL}/founder`,
+            sameAs: [LINKEDIN_URL],
+            worksFor: {
+              '@type': 'Organization',
+              '@id': `${SITE_URL}/#organization`,
+              name: 'Claxic Technologies',
+              url: `${SITE_URL}/`,
+            },
+            description: safeDescription,
+          },
+        },
+        'profile'
+      );
+    } else {
+      removeMetaTag(
+        'script[data-claxic-jsonld="profile"]'
+      );
     }
 
     return () => {
@@ -195,7 +231,12 @@ export default function SEO({
       removeMetaTag('meta[name="twitter:description"]');
       removeMetaTag('meta[name="twitter:image"]');
       removeMetaTag('link[rel="canonical"]');
-      removeMetaTag('script[data-claxic-jsonld="true"]');
+      removeMetaTag(
+        'script[data-claxic-jsonld="organization"]'
+      );
+      removeMetaTag(
+        'script[data-claxic-jsonld="profile"]'
+      );
     };
   }, [title, description, canonicalPath, robots, ogType]);
 

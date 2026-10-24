@@ -5,12 +5,12 @@ import { MEMBERS } from '../data/members';
 export default function MembersPage() {
   return (
     <>
-      <SEO
-  title="Our Team | Claxic Technologies"
-  description="Meet the people behind Claxic Technologies and Claxic Academy, working on software development, digital solutions and practical learning experiences."
+ <SEO
+  title="Nithesh Devaraj | Founder & CEO of Claxic Technologies"
+  description="Nithesh Devaraj is the Founder and CEO of Claxic Technologies, building websites, custom software, digital products and AI-driven solutions. He also leads the vision behind Claxic Academy."
   canonicalPath="/members"
   robots="index, follow"
-  ogType="website"
+  ogType="profile"
 />
       {/* ── Hero ── */}
       <section className="bg-white pt-12 pb-16 px-4 sm:px-6 lg:px-8 border-b border-gray-100">

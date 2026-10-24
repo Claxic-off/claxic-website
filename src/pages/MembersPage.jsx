@@ -95,3 +95,11 @@ export default function MembersPage() {
     </>
   );
 }
+
+<SEO
+  title="Our Team | Claxic Technologies"
+  description="Meet the people behind Claxic Technologies and Claxic Academy, working on software development, digital solutions and practical learning experiences."
+  canonicalPath="/members"
+  robots="index, follow"
+  ogType="website"
+/>
